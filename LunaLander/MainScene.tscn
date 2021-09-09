@@ -64,7 +64,19 @@ margin_right = 127.0
 margin_bottom = 43.0
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "SPeed: 0, 0"
+text = "Speed: 00.000, 00.000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PosLabel" type="Label" parent="InfoBar"]
+margin_left = 272.0
+margin_top = 19.0
+margin_right = 456.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pos: 00.000, 00.000"
 __meta__ = {
 "_edit_use_anchors_": false
 }

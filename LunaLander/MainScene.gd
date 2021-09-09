@@ -1,5 +1,6 @@
 extends Node2D
 
+const SCREEN_HEIGHT = 640
 const ACCEL_GY = 1.0		# 重力加速度
 
 var velocity = Vector2(0, 10)
@@ -13,8 +14,9 @@ func _physics_process(delta):
 	velocity += Vector2(0, ACCEL_GY)*delta
 	var v0 = velocity
 	velocity = $LunaModule.move_and_slide(velocity, Vector2.UP)
-	$InfoBar/SpeedLabel.text = "Speed: %f, %f" % [velocity.x, velocity.y]
-	print($LunaModule.is_on_floor())
+	$InfoBar/SpeedLabel.text = "Speed: %.3f, %.3f" % [velocity.x, velocity.y]
+	$InfoBar/PosLabel.text = "Pos: %.3f, %.3f" % [$LunaModule.position.x, SCREEN_HEIGHT - $LunaModule.position.y]
+	#print($LunaModule.is_on_floor())
 	if $LunaModule.is_on_floor() && v0.y >= 10:
 		$LunaModule.hide()
 		var ex = Explosion.instance()
