@@ -2,6 +2,7 @@ extends Node2D
 
 const SCREEN_HEIGHT = 640
 const ACCEL_GY = 1.0		# 重力加速度
+const ACCEL_IY = 5.0		# メインエンジン噴射加速度
 
 var velocity = Vector2(0, 10)
 
@@ -12,6 +13,11 @@ func _ready():
 
 func _physics_process(delta):
 	velocity += Vector2(0, ACCEL_GY)*delta
+	if Input.is_action_pressed("ui_up"):	# ↑キー押下時
+		velocity -= Vector2(0, ACCEL_IY)*delta
+		$LunaModule/AnimatedSprite.play("injection")
+	else:
+		$LunaModule/AnimatedSprite.play("default")
 	var v0 = velocity
 	velocity = $LunaModule.move_and_slide(velocity, Vector2.UP)
 	$InfoBar/SpeedLabel.text = "Speed: %.3f, %.3f" % [velocity.x, velocity.y]
